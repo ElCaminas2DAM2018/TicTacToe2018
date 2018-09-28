@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TicTacToe2018</string>
+    <string name="reset">Reset</string>
 </resources>

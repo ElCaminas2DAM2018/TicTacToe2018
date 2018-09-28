@@ -38,18 +38,36 @@ public class MainActivity extends AppCompatActivity {
 
         player1 = new Player("1", "X");
         player2 = new Player("2", "O");
-        currentPlayer = player1;
-        stateOfGame = StateOfGame.Playing;
-        numberOfMoves = 0;
 
+        setActionToResetButton();
+        initGame();
+
+    }
+
+    private void setActionToResetButton() {
+        Button buttonReset = findViewById(R.id.buttonReset);
+        buttonReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GridLayout gridLayout = findViewById(R.id.gridLayout);
+                gridLayout.removeAllViews();
+                initGame();
+            }
+        });
+    }
+
+    private void initGame() {
         GridLayout gridLayout = findViewById(R.id.gridLayout);
         gridLayout.setColumnCount(NUM_ROWS);
         gridLayout.setRowCount(NUM_ROWS);
 
         addButtons(gridLayout);
+        numberOfMoves = 0;
+        stateOfGame = StateOfGame.Playing;
+        currentPlayer = player1;
         displayTurn();
-
     }
+
 
     private void addButtons(GridLayout gridLayout) {
         buttons = new Button[NUM_ROWS][NUM_ROWS];
